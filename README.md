@@ -1,0 +1,1 @@
+quarkus create app br.upf.ads175:lab01-hello-quarkus --extension='rest,rest-jackson' --java=21
