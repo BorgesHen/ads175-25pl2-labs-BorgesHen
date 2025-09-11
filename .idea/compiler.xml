@@ -6,9 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="lab01-hello-quarkus (1)" />
+        <module name="lab05-critiquehub" />
+        <module name="lab05-critiquehub (1)" />
+        <module name="lab04-critiquehub-jpa" />
         <module name="lab01-hello-quarkus" />
         <module name="lab03-testes" />
+        <module name="lab01-hello-quarkus (1)" />
+        <module name="lab01-hello-quarkus (2)" />
       </profile>
     </annotationProcessing>
   </component>
@@ -16,7 +20,11 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="lab01-hello-quarkus" options="-parameters" />
       <module name="lab01-hello-quarkus (1)" options="-parameters" />
+      <module name="lab01-hello-quarkus (2)" options="-parameters" />
       <module name="lab03-testes" options="-parameters" />
+      <module name="lab04-critiquehub-jpa" options="-parameters" />
+      <module name="lab05-critiquehub" options="-parameters" />
+      <module name="lab05-critiquehub (1)" options="-parameters" />
     </option>
   </component>
 </project>

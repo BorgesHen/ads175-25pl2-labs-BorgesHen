@@ -7,10 +7,13 @@
         <option value="$PROJECT_DIR$/labs/lab02-java-web/pom.xml" />
         <option value="$PROJECT_DIR$/labs/lab01-hello-quarkus/pom.xml" />
         <option value="$PROJECT_DIR$/labs/lab03-testes/pom.xml" />
+        <option value="$PROJECT_DIR$/labs/lab04-jpa-intr/pom.xml" />
+        <option value="$PROJECT_DIR$/labs/lab05-critique hub/pom.xml" />
+        <option value="$PROJECT_DIR$/labs/lab06-critique hub/pom.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="24" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_24" project-jdk-name="openjdk-24" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
