@@ -1,0 +1,77 @@
+<!-- index.xhtml -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>CritiqueHub - Aplicação de Saudação</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .form-group { margin: 10px 0; }
+        .form-group label { display: inline-block; width: 100px; }
+        .form-group input { width: 200px; padding: 5px; }
+        .buttons { margin: 20px 0; }
+        .buttons button { margin-right: 10px; padding: 8px 16px; }
+        .output { margin-top: 20px; padding: 10px; background: #f5f5f5; }
+    </style>
+</h:head>
+<h:body>
+    <h1>Aplicação de Saudação JSF</h1>
+
+    <h:form id="saudacaoForm">
+        <!-- Campo para nome -->
+        <div class="form-group">
+            <h:outputLabel value="Nome:" for="nome"/>
+            <h:inputText id="nome"
+                         value="#{saudacaoManagedBean.saudacao.nome}"
+                         placeholder="Digite seu nome"/>
+        </div>
+
+        <!-- Campo para mensagem -->
+        <div class="form-group">
+            <h:outputLabel value="Mensagem:" for="mensagem"/>
+            <h:inputText id="mensagem"
+                         value="#{saudacaoManagedBean.saudacao.mensagem}"
+                         placeholder="Digite sua mensagem"/>
+        </div>
+
+        <!-- Botões de ação -->
+        <div class="buttons">
+            <!-- Botão para atualizar saudação -->
+            <h:commandButton value="Atualizar" styleClass="btn-primary">
+                <f:ajax execute="@form" render="saudacaoAtual"/>
+            </h:commandButton>
+
+            <!-- Botão para limpar campos -->
+            <h:commandButton value="Limpar"
+                             action="#{saudacaoManagedBean.limpar}"
+                             styleClass="btn-secondary">
+                <f:ajax execute="@form" render="@form"/>
+            </h:commandButton>
+
+            <!-- Botão para processar (demonstração) -->
+            <h:commandButton value="Processar"
+                             action="#{saudacaoManagedBean.processar}"
+                             styleClass="btn-success">
+                <f:ajax execute="@form" render="@none"/>
+            </h:commandButton>
+        </div>
+
+        <!-- Exibição da saudação atual -->
+        <div class="output">
+            <h:outputLabel value="Saudação Atual:" />
+            <h:outputText id="saudacaoAtual"
+                          value="#{saudacaoManagedBean.saudacao.saudacaoCompleta}"
+                          style="font-weight: bold; color: #2c5aa0;"/>
+        </div>
+    </h:form>
+
+    <!-- Informações de debug (apenas em desenvolvimento) -->
+    <div style="margin-top: 30px; font-size: 12px; color: #666;">
+        <h3>Informações de Debug:</h3>
+        <p>Bean Scope: Request Scoped</p>
+        <p>Nome atual: #{saudacaoManagedBean.saudacao.nome}</p>
+        <p>Mensagem atual: #{saudacaoManagedBean.saudacao.mensagem}</p>
+    </div>
+</h:body>
+</html>

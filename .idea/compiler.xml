@@ -9,6 +9,7 @@
         <module name="lab05-critiquehub" />
         <module name="lab05-critiquehub (1)" />
         <module name="lab04-critiquehub-jpa" />
+        <module name="lab05-critiquehub (2)" />
         <module name="lab01-hello-quarkus" />
         <module name="lab03-testes" />
         <module name="lab01-hello-quarkus (1)" />
@@ -25,6 +26,7 @@
       <module name="lab04-critiquehub-jpa" options="-parameters" />
       <module name="lab05-critiquehub" options="-parameters" />
       <module name="lab05-critiquehub (1)" options="-parameters" />
+      <module name="lab05-critiquehub (2)" options="-parameters" />
     </option>
   </component>
 </project>
