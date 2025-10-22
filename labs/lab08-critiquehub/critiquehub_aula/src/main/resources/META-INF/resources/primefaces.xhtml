@@ -1,0 +1,148 @@
+<!-- index.xhtml -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>CritiqueHub - Exemplo PrimeFaces</title>
+</h:head>
+
+<h:body style="padding: 20px; font-family: Arial;">
+    <h:form id="form">
+
+        <!-- Cabeçalho com PrimeFaces -->
+        <p:panel header="🚀 CritiqueHub - Exemplo Básico PrimeFaces"
+                 style="margin-bottom: 20px;">
+            <p>Este exemplo demonstra a diferença entre JSF core e PrimeFaces</p>
+        </p:panel>
+
+        <!-- Seção: Comparação JSF Core vs PrimeFaces -->
+        <p:tabView>
+
+            <!-- Aba 1: PrimeFaces -->
+            <p:tab title="✨ Com PrimeFaces">
+                <h:panelGrid columns="2" cellpadding="10">
+
+                    <!-- Campo nome com PrimeFaces -->
+                    <p:outputLabel for="nomePrime" value="Nome:*"
+                                   style="font-weight: bold;"/>
+                    <p:inputText id="nomePrime"
+                                 value="#{saudacaoController.nome}"
+                                 placeholder="Digite seu nome"
+                                 required="true"
+                                 requiredMessage="Nome é obrigatório"
+                                 style="width: 300px;"/>
+
+                    <!-- Campo email com validação -->
+                    <p:outputLabel for="emailPrime" value="Email:"
+                                   style="font-weight: bold;"/>
+                    <p:inputText id="emailPrime"
+                                 value="#{saudacaoController.email}"
+                                 placeholder="seu@email.com"
+                                 style="width: 300px;">
+                        <f:validateRegex pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                                         validatorMessage="Email inválido"/>
+                    </p:inputText>
+
+                    <!-- Botões com ícones -->
+                    <h:outputText value="" />
+                    <h:panelGroup>
+                        <p:commandButton value="Gerar Saudação"
+                                         action="#{saudacaoController.gerarSaudacao}"
+                                         update="form"
+                                         icon="pi pi-check"
+                                         styleClass="ui-button-success"
+                                         style="margin-right: 10px;"/>
+
+                        <p:commandButton value="Limpar"
+                                         action="#{saudacaoController.limpar}"
+                                         update="form"
+                                         icon="pi pi-refresh"
+                                         styleClass="ui-button-secondary"/>
+                    </h:panelGroup>
+                </h:panelGrid>
+
+                <!-- Resultado com PrimeFaces -->
+                <p:panel header="💬 Resultado"
+                         rendered="#{!saudacaoController.mensagemVazia}"
+                         style="margin-top: 20px; background-color: #f0f8ff;">
+                    <h:outputText value="#{saudacaoController.mensagem}"
+                                  style="font-size: 16px; color: #2e8b57;"/>
+                </p:panel>
+            </p:tab>
+
+            <!-- Aba 2: JSF Core (para comparação) -->
+            <p:tab title="🔧 JSF Core Tradicional">
+                <p style="color: #666; font-style: italic; margin-bottom: 20px;">
+                    Para comparação, veja como seria com JSF core:
+                </p>
+
+                <!-- Exemplo em código (não funcional, apenas demonstrativo) -->
+                <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px;">
+&lt;h:panelGrid columns="2"&gt;
+    &lt;h:outputLabel value="Nome:" /&gt;
+    &lt;h:inputText value="#{bean.nome}" /&gt;
+
+    &lt;h:outputLabel value="Email:" /&gt;
+    &lt;h:inputText value="#{bean.email}" /&gt;
+
+    &lt;h:commandButton value="Gerar" action="#{bean.gerar}" /&gt;
+    &lt;h:commandButton value="Limpar" action="#{bean.limpar}" /&gt;
+&lt;/h:panelGrid&gt;
+
+&lt;h:outputText value="#{bean.mensagem}"
+              rendered="#{!bean.mensagemVazia}" /&gt;
+                </pre>
+
+                <p:panel header="🤔 Limitações do JSF Core">
+                    <ul>
+                        <li>Sem validação visual automática</li>
+                        <li>Campos simples sem placeholder</li>
+                        <li>Botões sem ícones</li>
+                        <li>Sem estilos modernos</li>
+                        <li>Não responsivo</li>
+                        <li>Sem componentes ricos (calendário, máscaras, etc.)</li>
+                    </ul>
+                </p:panel>
+            </p:tab>
+
+        </p:tabView>
+
+        <!-- Demonstração de Componentes PrimeFaces -->
+        <p:panel header="🎨 Exemplos de Componentes PrimeFaces"
+                 style="margin-top: 20px;">
+
+            <h:panelGrid columns="2" cellpadding="10">
+
+                <!-- Rating (Avaliação) -->
+                <p:outputLabel value="Avalie o exemplo:" style="font-weight: bold;"/>
+                <p:rating stars="5" cancel="false"/>
+
+                <!-- ProgressBar -->
+                <p:outputLabel value="Progresso:" style="font-weight: bold;"/>
+                <p:progressBar value="75"
+                               labelTemplate="{value}% completo"
+                               style="width: 300px;"/>
+
+                <!-- Switch/Toggle -->
+                <p:outputLabel value="Modo escuro:" style="font-weight: bold;"/>
+                <p:toggleSwitch value="false"/>
+
+                <!-- Chips (Tags) -->
+                <p:outputLabel value="Tecnologias:" style="font-weight: bold;"/>
+                <p:chips value="#{null}"
+                         placeholder="Digite e pressione Enter"
+                         style="width: 300px;"/>
+
+            </h:panelGrid>
+        </p:panel>
+
+        <!-- Mensagens do sistema -->
+        <p:messages autoUpdate="true" closable="true"
+                    style="margin-top: 20px;"/>
+
+    </h:form>
+</h:body>
+</html>

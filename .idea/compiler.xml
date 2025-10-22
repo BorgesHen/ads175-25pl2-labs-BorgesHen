@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="lab08-critiquehub-faces" />
         <module name="lab05-critiquehub" />
         <module name="lab05-critiquehub (1)" />
         <module name="lab04-critiquehub-jpa" />
@@ -16,6 +17,9 @@
         <module name="lab01-hello-quarkus (2)" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="lab06-critiquehub-faces" target="21" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -27,6 +31,8 @@
       <module name="lab05-critiquehub" options="-parameters" />
       <module name="lab05-critiquehub (1)" options="-parameters" />
       <module name="lab05-critiquehub (2)" options="-parameters" />
+      <module name="lab06-critiquehub-faces" options="-parameters" />
+      <module name="lab08-critiquehub-faces" options="-parameters" />
     </option>
   </component>
 </project>
