@@ -7,8 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="lab08-critiquehub-faces" />
+        <module name="biblioteca-digital-full-primefaces" />
         <module name="lab05-critiquehub" />
         <module name="lab05-critiquehub (1)" />
+        <module name="biblioteca-quarkus" />
         <module name="lab04-critiquehub-jpa" />
         <module name="lab05-critiquehub (2)" />
         <module name="lab01-hello-quarkus" />
