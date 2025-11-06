@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="/templates/template.xhtml">
+    <ui:define name="title">Dashboard</ui:define>
+    <ui:define name="content">
+        <h:form id="dashboardForm">
+            <!-- Estatísticas -->
+            <div class="grid cols-4">
+                <div class="card">
+                    <h3>Total de Livros</h3>
+                    <div class="kpi">#{bibliotecaBean.totalLivros}</div>
+                </div>
+                <div class="card">
+                    <h3>Livros Disponíveis</h3>
+                    <div class="kpi ok">#{bibliotecaBean.livrosDisponiveis}</div>
+                </div>
+                <div class="card">
+                    <h3>Empréstimos Ativos</h3>
+                    <div class="kpi warn">#{bibliotecaBean.emprestimosAtivosCount}</div>
+                </div>
+                <div class="card">
+                    <h3>Total de Autores</h3>
+                    <div class="kpi">#{bibliotecaBean.totalAutores}</div>
+                </div>
+            </div>
+
+            <div class="layout">
+                <!-- Autores (Visão Geral) -->
+                <div class="card">
+                    <div class="section-title">
+                        <h2>Autores</h2>
+                        <h:link value="Ver todos os Autores" outcome="autores.xhtml" styleClass="btn"/>
+                    </div>
+                    <h:dataTable value="#{bibliotecaBean.autores}" var="autor" styleClass="table">
+                        <h:column>
+                            <f:facet name="header">Nome</f:facet>
+                            <h:outputText value="#{autor.nome}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Email</f:facet>
+                            <h:outputText value="#{autor.email}"/>
+                        </h:column>
+                    </h:dataTable>
+                    <h:panelGroup rendered="#{empty bibliotecaBean.autores}">
+                        <span class="muted">Nenhum autor cadastrado.</span>
+                    </h:panelGroup>
+                </div>
+
+                <!-- Livros (Visão Geral) -->
+                <div class="card">
+                    <div class="section-title">
+                        <h2>Livros</h2>
+                        <h:link value="Ver todos os Livros" outcome="livros.xhtml" styleClass="btn"/>
+                    </div>
+                    <h:dataTable value="#{bibliotecaBean.livros}" var="livro" styleClass="table">
+                        <h:column>
+                            <f:facet name="header">Título</f:facet>
+                            <h:outputText value="#{livro.titulo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Autor</f:facet>
+                            <h:outputText value="#{livro.autor.nome}"/>
+                        </h:column>
+                    </h:dataTable>
+                    <h:panelGroup rendered="#{empty bibliotecaBean.livros}">
+                        <span class="muted">Nenhum livro cadastrado.</span>
+                    </h:panelGroup>
+                </div>
+
+                <!-- Empréstimos Ativos (Visão Geral) -->
+                <div class="card">
+                    <div class="section-title">
+                        <h2>Empréstimos Ativos</h2>
+                        <h:link value="Ir para Livros" outcome="livros.xhtml" styleClass="btn"/>
+                    </div>
+                    <h:dataTable value="#{bibliotecaBean.emprestimosAtivos}" var="emprestimo" styleClass="table">
+                        <h:column>
+                            <f:facet name="header">Usuário</f:facet>
+                            <h:outputText value="#{emprestimo.nomeUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Livro</f:facet>
+                            <h:outputText value="#{emprestimo.livro.titulo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Data Empréstimo</f:facet>
+                            <h:outputText value="#{emprestimo.dataEmprestimo}"/>
+                        </h:column>
+                    </h:dataTable>
+                    <h:panelGroup rendered="#{empty bibliotecaBean.emprestimosAtivos}">
+                        <span class="muted">Nenhum empréstimo ativo no momento.</span>
+                    </h:panelGroup>
+                </div>
+            </div>
+
+            <div style="margin-top:14px;">
+                <h:commandButton value="Recarregar Dados" action="#{bibliotecaBean.recarregarDados}" styleClass="btn primary"/>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

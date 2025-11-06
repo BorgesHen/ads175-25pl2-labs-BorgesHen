@@ -79,7 +79,6 @@ public class Autor {
     @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Livro> livros = new ArrayList<>();
 
-    // Getters, setters e construtores
 }
 ```
 
@@ -131,7 +130,6 @@ public class Livro {
     @OneToMany(mappedBy = "livro", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Emprestimo> emprestimos;
 
-    // Getters, setters e construtores
 }
 ```
 
@@ -170,11 +168,9 @@ public class BibliotecaBean {
     @NotNull
     private Livro livro;
 
-    // Adicionando o método de validação
     public void salvarAutor() {
         if (autor != null) {
             try {
-                // Validação do autor
                 bibliotecaService.salvarAutor(autor);
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Autor salvo com sucesso"));
             } catch (Exception e) {
@@ -190,9 +186,8 @@ public class BibliotecaBean {
 ## Verificando o Resultado
 
 1. **Execute o projeto no modo de desenvolvimento**:
-   ```bash
+        bash
    ./mvnw compile quarkus:dev
-   ```
 
 2. **Acesse a aplicação** no navegador: [http://localhost:8080](http://localhost:8080).
 
@@ -203,11 +198,4 @@ public class BibliotecaBean {
 4. **Verificando mensagens de erro**:
    - Se os dados forem inválidos, as mensagens de erro definidas nas anotações de validação serão exibidas.
 
----
-
-## Referências
-
-- [Documentação do Quarkus](https://quarkus.io/guides/hibernate-orm)
-- [Documentação do Jakarta Bean Validation](https://jakarta.ee/specifications/bean-validation/3.0/jakarta-bean-validation-spec-3.0.html)
-- [Hibernate Validator](https://hibernate.org/validator/)
 

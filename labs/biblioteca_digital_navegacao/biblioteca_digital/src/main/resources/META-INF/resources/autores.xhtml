@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="/templates/template.xhtml">
+    <ui:define name="title">Autores</ui:define>
+    <ui:define name="content">
+        <h:form id="autoresForm">
+            <div class="section-title">
+                <h2>Autores - Listagem Completa</h2>
+                <h:link value="Voltar para o Dashboard" outcome="index.xhtml" styleClass="btn"/>
+            </div>
+            <div class="card">
+                <h:dataTable value="#{bibliotecaBean.autores}" var="autor" styleClass="table">
+                    <h:column>
+                        <f:facet name="header">Nome</f:facet>
+                        <h:outputText value="#{autor.nome}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Email</f:facet>
+                        <h:outputText value="#{autor.email}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Nascimento</f:facet>
+                        <h:outputText value="#{autor.dataNascimento}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Biografia</f:facet>
+                        <h:outputText value="#{autor.biografia}"/>
+                    </h:column>
+                    <!-- Desafio bônus: quantidade de livros por autor, se disponível -->
+                    <h:column>
+                        <f:facet name="header"># Livros</f:facet>
+                        <h:outputText value="#{empty autor.livros ? 0 : autor.livros.size()}"/>
+                    </h:column>
+                </h:dataTable>
+                <h:panelGroup rendered="#{empty bibliotecaBean.autores}">
+                    <span class="muted">Nenhum autor cadastrado.</span>
+                </h:panelGroup>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>
