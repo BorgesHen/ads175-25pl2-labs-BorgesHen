@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>🎬 Gerenciamento de Filmes - CritiqueHub</title>
+    <style>
+        .filme-container {
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .form-grid {
+            margin-bottom: 20px;
+        }
+    </style>
+</h:head>
+<h:body>
+    <div class="filme-container">
+
+        <h:form id="formFilme">
+
+            <!-- Cabeçalho -->
+            <p:panel header="🎬 Gerenciamento de Filmes - CritiqueHub" style="margin-bottom: 20px;">
+                <p>Sistema completo de cadastro e gerenciamento do catálogo de filmes</p>
+            </p:panel>
+
+            <!-- Formulário de Cadastro/Edição -->
+            <p:panel header="➕ Novo Filme" style="margin-bottom: 20px;">
+
+                <!-- Campo Título -->
+                <p:outputLabel for="titulo" value="Título:" style="font-weight: bold;" />
+                <p:inputText id="titulo" value="#{filmeController.filme.titulo}" />
+
+                <!-- Botões -->
+                <h:outputText value="" />
+                <h:panelGroup>
+                    <p:commandButton value="Salvar" action="#{filmeController.salvar}" update="formFilme"
+                        icon="pi pi-check" styleClass="ui-button-success" style="margin-right: 10px;" />
+
+                    <p:commandButton value="Cancelar" action="#{filmeController.novo}" update="formFilme"
+                        icon="pi pi-times" styleClass="ui-button-secondary" />
+                </h:panelGroup>
+                </p:panel>
+
+                <p:panel header="Lista de Filmes" style="margin-bottom: 20px;">
+
+                    <table>
+                        <ui:repeat value="#{filmeController.listaFilmes}" var="filme">
+
+                            <tr>
+                                <td>#{filme.titulo}</td>
+                            </tr>
+
+                        </ui:repeat>
+                    </table>
+
+                </p:panel>
+
+                <!-- Mensagens -->
+                <p:messages autoUpdate="true" closable="true" style="margin-top: 20px;" />
+        </h:form>
+
+    </div>
+</h:body>
+
+</html>

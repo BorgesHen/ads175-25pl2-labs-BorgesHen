@@ -7,7 +7,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="lab08-critiquehub-faces" />
-        <module name="biblioteca-digital-full-primefaces" />
         <module name="lab05-critiquehub" />
         <module name="lab05-critiquehub (1)" />
         <module name="biblioteca-quarkus" />
@@ -20,6 +19,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="biblioteca-digital-full-primefaces" target="1.8" />
       <module name="lab06-critiquehub-faces" target="21" />
     </bytecodeTargetLevel>
   </component>
